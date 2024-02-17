@@ -112,3 +112,5 @@ with application:
             st.success('Diagnosis and prescription is valid')
         else:
             st.error('Diagnosis and prescription is invalid')
+
+st.info(f"Confidence: {answer['score']}")
