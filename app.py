@@ -18,7 +18,7 @@ application = st.container()
 # load dataset
 @st.cache
 def load_data():
-    url = 'https://github.com/kewchi/capstone/blob/main/dataset.csv'
+    url = 'https://github.com/kewchi/capstone/blob/3383d31391e22fb37737decf18a0ee62b1574357/dataset.csv'
     data = pd.read_csv(url)
     return data
 
