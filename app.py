@@ -7,8 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1_MYVYklFd9ee3OzHl-mhD2slytO5ak5p
 """
 
-!pip install scikit-learn
-
 import pickle
 import streamlit as st
 import pandas as pd
