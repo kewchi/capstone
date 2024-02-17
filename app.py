@@ -30,7 +30,7 @@ model = pickle.load(pickle_in)
 def output(diagnosis, prescription):
   translated_input= []
   le = LabelEncoder()
-  data = load.data()
+  data = load_data()
   label_encoder.fit(data) 
     
   diagnosis = le.transform([diagnosis[0]])[0]
