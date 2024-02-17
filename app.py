@@ -46,11 +46,11 @@ def output(diagnosis, prescription):
  # Encode input for prescription
   transprescription = lep.transform([prescription]) 
 
-  destination_array[0] = transdiagnosis 
-  destination_array[1] = transprescription
+  translated_input[0] = transdiagnosis 
+  translated_input[1] = transprescription
     
   #predicting if it is voided or not
-  output = model.predict([[destination_array]])
+  output = model.predict([[translated_input]])
 
   if output == 0:
       res = 'Not Voided'
