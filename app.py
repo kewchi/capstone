@@ -10,7 +10,6 @@ Original file is located at
 import pickle
 import streamlit as st
 import pandas as pd
-import sklearn
 from sklearn.preprocessing import LabelEncoder
 
 header = st.container()
