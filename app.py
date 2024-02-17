@@ -35,7 +35,10 @@ def output(diagnosis, prescription):
   ServiceItemName = le.fit_transform(data['ServiceItemName'])
   OpticalDiagnosisCode = le.fit_transform(data['OpticalDiagnosisCode'])
   Void = le.fit_transform(data['Void'])
-    
+
+#Put the encoded labels into a dataframe cdata
+  cdata =pd.DataFrame({'ServiceItemName':ServiceItemName, 'OpticalDiagnosisCode':OpticalDiagnosisCode, 'Void':Void})
+
   diagnosis = le.transform([diagnosis[0]])[0]
   prescription = le.transform([prescription[1]])[0]
 
