@@ -1,6 +1,7 @@
+scikit-learn
 streamlit
 transformers
 sentencepiece
 tensorflow
 torch
-scikit-learn
+
