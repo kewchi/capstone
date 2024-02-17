@@ -31,7 +31,10 @@ def output(diagnosis, prescription):
   translated_input= []
   le = LabelEncoder()
   data = load_data()
-  label_encoder.fit(data) 
+    
+  ServiceItemName = le.fit_transform(data['ServiceItemName'])
+  OpticalDiagnosisCode = le.fit_transform(data['OpticalDiagnosisCode'])
+  Void = le.fit_transform(data['Void'])
     
   diagnosis = le.transform([diagnosis[0]])[0]
   prescription = le.transform([prescription[1]])[0]
