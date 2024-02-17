@@ -28,6 +28,7 @@ model = pickle.load(pickle_in)
 
 # defining the function to give the output using the user input
 def output(diagnosis, prescription):
+  le = LabelEncoder()
   translated_input = []
   data = load_data()
     
