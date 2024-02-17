@@ -15,6 +15,10 @@ from sklearn.preprocessing import LabelEncoder
 header = st.container()
 application = st.container()
 
+# load dataset
+url = 'https://github.com/kewchi/capstone/blob/main/dataset.csv'
+data = pd.read_csv(url, index_col=0)
+
 # loading the trained model
 pickle_in = open('rf.pkl', 'rb')
 model = pickle.load(pickle_in)
@@ -23,6 +27,7 @@ model = pickle.load(pickle_in)
 def output(diagnosis, prescription):
   translated_input= []
   le = LabelEncoder()
+  label_encoder.fit(data) 
     
   diagnosis = le.transform([diagnosis[0]])[0]
   prescription = le.transform([prescription[1]])[0]
