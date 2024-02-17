@@ -16,8 +16,11 @@ header = st.container()
 application = st.container()
 
 # load dataset
-url = 'https://github.com/kewchi/capstone/blob/main/dataset.csv'
-data = pd.read_csv(url, index_col=0)
+@st.cache
+def load_data():
+    url = 'https://github.com/kewchi/capstone/blob/main/dataset.csv'
+    data = pd.read_csv(url)
+    return data
 
 # loading the trained model
 pickle_in = open('rf.pkl', 'rb')
@@ -27,6 +30,7 @@ model = pickle.load(pickle_in)
 def output(diagnosis, prescription):
   translated_input= []
   le = LabelEncoder()
+  data = load.data()
   label_encoder.fit(data) 
     
   diagnosis = le.transform([diagnosis[0]])[0]
