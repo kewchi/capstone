@@ -28,7 +28,7 @@ model = pickle.load(pickle_in)
 
 # defining the function to give the output using the user input
 def output(diagnosis, prescription):
-  translated_input = []
+  translated_input = np.empty(2)
   data = load_data()
 
  # Fit the LabelEncoder on the labels in the diagnosis column
@@ -45,11 +45,11 @@ def output(diagnosis, prescription):
  # Encode input for prescription
   transprescription = lep.transform([prescription]) 
 
-  translated_input.append(transdiagnosis)
-  translated_input.append(transprescription)
+  destination_array[0] = transdiagnosis 
+  destination_array[1] = transprescription
     
   #predicting if it is voided or not
-  output = model.predict([[transdiagnosis, transprescription]])
+  output = model.predict([[destination_array]])
 
   if output == 0:
       res = 'Not Voided'
