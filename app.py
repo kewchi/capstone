@@ -29,7 +29,6 @@ model = pickle.load(pickle_in)
 
 # defining the function to give the output using the user input
 def output(diagnosis, prescription):
-  translated_input = np.empty(2)
   data = load_data()
 
  # Fit the LabelEncoder on the labels in the diagnosis column
@@ -46,11 +45,27 @@ def output(diagnosis, prescription):
  # Encode input for prescription
   transprescription = lep.transform([prescription]) 
 
-  translated_input[0] = transdiagnosis 
-  translated_input[1] = transprescription
+# Create a nested list
+  nested_list = [encoded_value1, encoded_value2]
+
+# Convert nested list to a NumPy array
+  nparray = np.array(nested_list)
+
+# Create the desired 2D array
+  reshaped_array = [list(row) for row in nparray]
+
+# Convert to the desired 2D array
+  reshaped_array1 = [sublist[0] for sublist in reshaped_array]
+
+# Convert the list to a NumPy array
+  reshaped_array2 = np.array(reshaped_array1)
+
+# Reshape the array to a 2D array with one row and as many columns as needed
+  reshaped_array3 = reshaped_array2.reshape(1, -1)
+    
     
   #predicting if it is voided or not
-  output = model.predict([[translated_input]])
+  output = model.predict(reshaped_array3)
 
   if output == 0:
       res = 'Not Voided'
