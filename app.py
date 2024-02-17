@@ -21,10 +21,15 @@ model = pickle.load(pickle_in)
 
 # defining the function to give the output using the user input
 def output(diagnosis, prescription):
+  translated_input= []
   le = LabelEncoder()
-  diagnosis = le.fit_transform([diagnosis])
-  prescription = le.fit_transform([prescription])
+    
+  diagnosis = le.transform([diagnosis[0]])[0]
+  prescription = le.transform([prescription[1]])[0]
 
+  translated_input.append(transdiagnosis)
+  translated_input.append(transprescription)
+    
   #predicting if it is voided or not
   output = model.predict([[diagnosis, prescription]])
 
