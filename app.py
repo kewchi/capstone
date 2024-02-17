@@ -46,7 +46,7 @@ def output(diagnosis, prescription):
   transprescription = lep.transform([prescription]) 
 
 # Create a nested list
-  nested_list = [transdiagnosis, transprescription]
+  nested_list = [transprescription, transdiagnosis]
 
 # Convert nested list to a NumPy array
   nparray = np.array(nested_list)
