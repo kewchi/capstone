@@ -28,25 +28,35 @@ model = pickle.load(pickle_in)
 
 # defining the function to give the output using the user input
 def output(diagnosis, prescription):
-  translated_input= []
-  le = LabelEncoder()
+  translated_input = []
   data = load_data()
     
   ServiceItemName = le.fit_transform(data['ServiceItemName'])
   OpticalDiagnosisCode = le.fit_transform(data['OpticalDiagnosisCode'])
   Void = le.fit_transform(data['Void'])
 
-#Put the encoded labels into a dataframe cdata
+ #Put the encoded labels into a dataframe cdata
   cdata =pd.DataFrame({'ServiceItemName':ServiceItemName, 'OpticalDiagnosisCode':OpticalDiagnosisCode, 'Void':Void})
 
-  diagnosis = le.transform([diagnosis[0]])[0]
-  prescription = le.transform([prescription[1]])[0]
+ # Fit the LabelEncoder on the labels in the diagnosis column
+  led = LabelEncoder()
+  led.fit(cdata['OpticalDiagnosisCode'])
+
+ # Fit the LabelEncoder on the labels in the prescription column
+  lep = LabelEncoder()
+  lep.fit(cdata['ServiceItemName'])
+
+ # Encode input for diagnosis
+  transdiagnosis = led.transform([diagnosis]) 
+
+ # Encode input for prescription
+  transprescription = lep.transform([prescription]) 
 
   translated_input.append(transdiagnosis)
   translated_input.append(transprescription)
     
   #predicting if it is voided or not
-  output = model.predict([[diagnosis, prescription]])
+  output = model.predict([[transdiagnosis, transprescription]])
 
   if output == 0:
       res = 'Not Voided'
