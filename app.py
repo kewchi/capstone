@@ -28,24 +28,16 @@ model = pickle.load(pickle_in)
 
 # defining the function to give the output using the user input
 def output(diagnosis, prescription):
-  le = LabelEncoder()
   translated_input = []
   data = load_data()
-    
-  ServiceItemName = le.fit_transform(data['ServiceItemName'])
-  OpticalDiagnosisCode = le.fit_transform(data['OpticalDiagnosisCode'])
-  Void = le.fit_transform(data['Void'])
-
- #Put the encoded labels into a dataframe cdata
-  cdata =pd.DataFrame({'ServiceItemName':ServiceItemName, 'OpticalDiagnosisCode':OpticalDiagnosisCode, 'Void':Void})
 
  # Fit the LabelEncoder on the labels in the diagnosis column
   led = LabelEncoder()
-  led.fit(cdata['OpticalDiagnosisCode'])
+  led.fit(data['OpticalDiagnosisCode'])
 
  # Fit the LabelEncoder on the labels in the prescription column
   lep = LabelEncoder()
-  lep.fit(cdata['ServiceItemName'])
+  lep.fit(data['ServiceItemName'])
 
  # Encode input for diagnosis
   transdiagnosis = led.transform([diagnosis]) 
