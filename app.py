@@ -77,9 +77,7 @@ with header:
     st.title('Diagnosis-based prescription error detection')
 
 with application:
-    st.header('Instructions')
-    st.text('Choose a diagnosis from the drop down list and enter the values accordingly')
-    st.text('--------------------------------------------------------------------------')
+    st.text('Choose a diagnosis and a medicine to prescribe from the drop down list')
     sel_col, disp_col = st.columns(2)
 
     diagnosis = sel_col.selectbox('Please Select a Diagnosis',
